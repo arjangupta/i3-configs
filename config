@@ -1,0 +1,260 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+
+# monitor layout from arandr / xrandr
+# TODO -- this should be getting executed not from i3, but because that is not working, we are running it from here
+exec --no-startup-id ~/.screenlayout/default.sh
+
+set $mod Mod1
+
+font pango:Droid Sans Mono for Powerline Regular 9
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+#####################
+### Custom Modis
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec "rofi -combi-modi window,drun,run,ssh -show-icons -show combi -modi combi -sidebar-mode -color-window '#000000, #000000, #000000' -color-normal '#000000, #b3e774, #000000, #b3e774, #000000' -color-active '#000000, #b3e774, #000000, #b3e774, #000000' -color-urgent '#000000, #b3e774, #000000, #b3e774, #000000'"
+
+# display swap
+bindsym $mod+Shift+s exec $HOME/.bin/i3-display-swap
+
+# phpstorm modi (launcher for projects)
+bindsym $mod+Shift+t exec $HOME/.bin/phpstorm-modi
+
+# temp testing with cli modi
+bindsym $mod+Shift+w exec "$HOME/.bin/cli-modi > /tmp/climodi"
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+button9 focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+button8 focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# workspace names
+set $workspace1 "1 terminal" 
+set $workspace2 "2" 
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5 smartgit"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8 chrome"
+set $workspace9 "9 teams_slack"
+set $workspace10 "0 vscode"
+
+
+# default workspace monitor outputs
+# workspace $workspace1 output primary
+# workspace $workspace2 output primary
+workspace $workspace3 output primary
+workspace $workspace4 output primary
+workspace $workspace5 output primary
+workspace $workspace6 output primary
+workspace $workspace7 output HDMI-A-0
+workspace $workspace8 output primary
+workspace $workspace9 output HDMI-A-0
+workspace $workspace10 output HDMI-A-0
+
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
+bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
+bindsym XF86AudioMute exec "amixer -D pulse set Master 1+ toggle"
+
+# scrot & gimp - root
+#
+# take a screenshot
+bindsym --release Print exec scrot -s $HOME/Pictures/`date +%Y-%m-%d_%H-%M-%S`.png
+# take a screenshot w/ a delay
+bindsym --release $mod+Print exec scrot --delay 6 -s $HOME/Pictures/`date +%Y-%m-%d_%H-%M-%S`.png
+# take a screenshot and save to clipboard
+bindsym --release $mod+Shift+Print exec maim -s | xclip -selection clipboard -t image/png 
+
+# bind fancy lock screen
+bindsym $mod+Scroll_Lock exec $HOME/.antigen/bundles/guimeira/i3lock-fancy-multimonitor/lock -b="0x8"
+ 
+# remove border
+for_window [class="^.*"] border pixel 0
+
+#
+# workspace assignments - tells i3 where to start programs
+#
+assign [class="Microsoft Teams - Preview"] → $workspace9
+assign [class="Slack"] → $workspace9
+assign [class="google-chrome"] → $workspace8
+assign [class="Gnome-terminal"] → $workspace1
+assign [class="SmartGit"] → $workspace5
+
+#
+#autostart - starts programs when i3 starts
+#
+# development / collaboration
+exec --no-startup-id teams
+exec --no-startup-id slack
+exec --no-startup-id gnome-terminal
+exec --no-startup-id google-chrome
+exec --no-startup-id /home/arjan/Downloads/smart_git_extracted/smartgit/bin/smartgit.sh
+
+# kdeconnect for phone syncing
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+
+# i3bar for workspaces and windows
+bar {
+        colors {
+        background #2f343f
+        statusline #2f343f
+        separator #4b5262
+
+        # colour of border, background, and text
+        focused_workspace       #2f343f #f59335 #000000
+        active_workspace        #2f343f #a3be8c #000000
+        inactive_workspace      #2f343f #2f343f #d8dee8
+        urgent_workspace       #2f343f #ebcb8b #2f343f
+    }
+        status_command i3status
+}
+
+# colour of border, background, text, indicator, and child_border
+client.focused              #2f343f #f59335 #000000 #bf616a #d8dee8
+client.focused_inactive     #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.unfocused            #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.urgent               #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.placeholder          #2f343f #2f343f #d8dee8 #2f343f #2f343f
+client.background           #2f343f
+
+# i3 move a workspace to another monitor (multi monitor setup)
+mode "move_workspace" {
+ bindsym l move workspace to output up
+ bindsym k move workspace to output down
+ bindsym j move workspace to output left
+ bindsym semicolon move workspace to output right
+
+ #alternatively, you can use the cursor keys:
+ bindsym Up move workspace to output up
+ bindsym Down move workspace to output down
+ bindsym Left move workspace to output left
+ bindsym Right move workspace to output right
+
+ bindsym Escape mode "default"
+}
+
+bindsym $mod+o mode "move_workspace"
