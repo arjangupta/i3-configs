@@ -1,0 +1,135 @@
+#
+# .zshrc config
+#
+# basic zsh/antigen, vim, golang, nvm, setup
+#
+if [[ -e "${HOME}/.zprofile" ]]; then
+  source "${HOME}/.zprofile"
+fi
+
+# Grab antigen if we dont have it
+if [[ ! -e $HOME/.antigen/antigen.zsh ]]; then
+    git clone https://github.com/zsh-users/antigen.git ~/.antigen
+fi
+
+# source antigen now
+source $HOME/.antigen/antigen.zsh
+
+# grab our aliases if they exist
+if [[ -e "${HOME}/.aliases" ]]; then
+  source "${HOME}/.aliases"
+fi
+
+#default folder our NVM install goes to
+export NVM_DIR="$HOME/.nvm"
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle pip
+antigen bundle command-not-found
+antigen bundle vundle
+antigen bundle wd
+
+# highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# kubernetes
+antigen bundle kubectl
+antigen bundle ahmetb/kubectx
+
+# always been getting more efficient
+antigen bundle djui/alias-tips
+
+# preload nvm for node version management
+antigen bundle lukechilds/zsh-nvm
+
+#override ctrl to use peco for fuzzy searching of history
+antigen bundle jimeh/zsh-peco-history
+
+#lock screen, we bind to this in our i3 keybindings 
+antigen bundle guimeira/i3lock-fancy-multimonitor
+
+# auto suggestions
+antigen bundle zsh-users/zsh-autosuggestions
+
+#load up teiler for imagie / screencasting
+# todo :: 
+# antigen bundle carnage/teiler
+
+#our zsh theme, a popular powerline variant
+antigen theme agnoster
+
+# Tell antigen that you're done.
+antigen apply
+
+# stern completion
+source <(stern --completion=zsh)
+
+# add our personal bin to path
+export PATH=$HOME/.bin/:$PATH
+
+#powerline?
+export POWERLINE_CONFIG_COMMAND=$HOME/.local/bin/powerline-config 
+
+# add composer to path
+export PATH=$PATH:~/.config/composer/vendor/bin/
+
+#golang
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
+# rust / cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# add yarn to bin
+export PATH=$PATH:`yarn global bin`
+
+# configure editors
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# configure browser
+# TODO - Allow to be configurable on darwin/osx?
+export BROWSER="google-chrome"
+
+# work variables
+source ~/.intellifarms
+
+export DEV_HOST=dev0.intellifarms.com
+
+# add krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export HUSKY_SKIP_HOOKS=1
+
+# add environment variable to map my user to agupta in order to ssh to web servers
+export CLI_CP_SSH_USER=agupta
+
+# this env var is used to copy prod data down to my localhost db
+export DEV_HOST=dev0.intellifarms.com
+
+# vcpkg
+export PATH=$PATH:$HOME/workspace/vcpkg/
+
+# gateway-firmware build aliases
+alias gwfb="./build.sh --run-tests"
+alias yarnall="yarn install && yarn build && yarn test"
+
+# git alias
+alias gps="gp --set-upstream origin"
+
+# ws2 ip config aliases
+alias ws2ip="sudo cp /etc/netplan/01-network-manager-all.yaml.ws2gm /etc/netplan/01-network-manager-all.yaml && sudo netplan apply"
+alias default_net="sudo cp /etc/netplan/01-network-manager-all.yaml.internet /etc/netplan/01-network-manager-all.yaml && sudo netplan apply"
+
+# SureTrack Gateway var exports
+export MY_GATEWAY_PASSWORD=binman123
+export MY_GATEWAY_IP=172.18.51.63
+
+# lock alias
+alias night='$HOME/.antigen/bundles/guimeira/i3lock-fancy-multimonitor/lock -b="0x8" && systemctl suspend'
