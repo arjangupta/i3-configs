@@ -39,8 +39,8 @@
 ###############################################################################
 
 # Meta Key - Alt key is Mod1, and Windows key is Mod4
-set_from_resource $mod  i3-wm.mod Mod1
-set_from_resource $alt  i3-wm.alt Mod4
+set_from_resource $mod  i3-wm.mod Mod4
+set_from_resource $alt  i3-wm.alt Mod1
 
 set_from_resource $i3-wm.binding. i3-wm.binding.
 
@@ -120,12 +120,12 @@ set_from_resource $i3-wm.program.help i3-wm.program.help /usr/bin/remontoire-tog
 bindsym $mod+$i3-wm.binding.help exec --no-startup-id $i3-wm.program.help
 
 ## Launch // File Search // <><Alt> Space ##
-set_from_resource $i3-wm.binding.file_search i3-wm.binding.file_search Mod4+space
+set_from_resource $i3-wm.binding.file_search i3-wm.binding.file_search Mod1+space
 set_from_resource $i3-wm.program.file_search i3-wm.program.file_search rofi -show find -modi find:/usr/share/rofi/modi/finder.sh
 bindsym $mod+$i3-wm.binding.file_search exec $i3-wm.program.file_search
 
 ## Launch // Look Selector // <><Alt> l ##
-set_from_resource $i3-wm.binding.look_selector i3-wm.binding.look_selector Mod4+l
+set_from_resource $i3-wm.binding.look_selector i3-wm.binding.look_selector Mod1+l
 set_from_resource $i3-wm.program.look_selector i3-wm.program.look_selector rofi -show look -modi look:/usr/share/rofi/modi/look-selector.sh
 bindsym $mod+$i3-wm.binding.look_selector exec $i3-wm.program.look_selector
 
@@ -184,7 +184,7 @@ set_from_resource $i3-wm.binding.ws_next i3-wm.binding.ws_next Tab
 bindsym $mod+$i3-wm.binding.ws_next workspace next
 
 ## Navigate // Next Workspace // <><Alt> → ##
-set_from_resource $i3-wm.binding.ws_next2 i3-wm.binding.ws_next2 Mod4+Right
+set_from_resource $i3-wm.binding.ws_next2 i3-wm.binding.ws_next2 Mod1+Right
 bindsym $mod+$i3-wm.binding.ws_next2 workspace next
 
 ## Navigate // Next Workspace on Output // <><Ctrl> Tab ##
@@ -200,7 +200,7 @@ set_from_resource $i3-wm.binding.ws_prev i3-wm.binding.ws_prev Shift+Tab
 bindsym $mod+$i3-wm.binding.ws_prev workspace prev
 
 ## Navigate // Previous Workspace // <><Alt> ← ##
-set_from_resource $i3-wm.binding.ws_prev2 i3-wm.binding.ws_prev2 Mod4+Left
+set_from_resource $i3-wm.binding.ws_prev2 i3-wm.binding.ws_prev2 Mod1+Left
 bindsym $mod+$i3-wm.binding.ws_prev2 workspace prev
 
 ## Navigate // Previous Workspace on Output // <><Ctrl><Shift> Tab ##
@@ -337,7 +337,7 @@ bindsym $mod+$alt+Ctrl+$ws8_key move container to workspace number $ws18; worksp
 bindsym $mod+$alt+Ctrl+$ws9_key move container to workspace number $ws19; workspace number $ws19
 
 ## Modify // Carry Window to Next Free Workspace // <><Alt> ` ##
-set_from_resource $i3-wm.binding.take_next_free i3-wm.binding.take_next_free Mod4+grave
+set_from_resource $i3-wm.binding.take_next_free i3-wm.binding.take_next_free Mod1+grave
 bindsym $mod+$i3-wm.binding.take_next_free exec --no-startup-id /usr/bin/i3-next-workspace --move-window-and-follow
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -669,12 +669,15 @@ exec --no-startup-id $i3-wm.program.3
 # Output workspaces to screens
 workspace "1: Terminal" output primary
 workspace "8: Chrome" output HDMI-0
-workspace "10: Code" output HDMI-0
+workspace "10: Code" output primary
 
 # Assignments for workspaces
 assign [class="Google-chrome"] "8: Chrome"
 assign [class="Code"] "10: Code"
 
 # Sequence of commands upon login
-exec --no-startup-id i3-msg 'workspace "3: Temps"; exec gnome-terminal -- watch sensors; exec gnome-terminal -- watch nvidia-smi; workspace "2: SysMon"; exec gnome-system-monitor; workspace "1: Terminal"; exec gnome-terminal'
+exec --no-startup-id i3-msg 'workspace "1: Terminal"; exec gnome-terminal'
 exec --no-startup-id google-chrome
+
+bindsym $mod+s layout stacking
+bindsym $mod+e layout toggle split
