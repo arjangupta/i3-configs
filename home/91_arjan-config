@@ -19,7 +19,7 @@ assign [class="Google-chrome"] "8: Chrome"
 assign [class="Code"] "10: Code"
 assign [class="SmartGit"] "19: SmartGit"
 
-# Layouts for worspaces
+# Layouts for workspaces
 for_window [class="Google-chrome"] layout tabbed
 for_window [class="Code"] layout tabbed
 
