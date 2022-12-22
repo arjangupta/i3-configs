@@ -12,10 +12,12 @@ bindsym $mod+$i3-wm.binding.right focus right
 workspace "1: Terminal" output primary
 workspace "8: Chrome" output HDMI-0
 workspace "10: Code" output primary
+workspace "19: SmartGit" output primary
 
 # Assignments for workspaces
 assign [class="Google-chrome"] "8: Chrome"
 assign [class="Code"] "10: Code"
+assign [class="SmartGit"] "19: SmartGit"
 
 # Sequence of commands upon login
 exec --no-startup-id i3-msg 'workspace "1: Terminal"; exec gnome-terminal'
