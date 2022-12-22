@@ -19,6 +19,10 @@ assign [class="Google-chrome"] "8: Chrome"
 assign [class="Code"] "10: Code"
 assign [class="SmartGit"] "19: SmartGit"
 
+# Layouts for worspaces
+for_window [class="Google-chrome"] layout tabbed
+for_window [class="Code"] layout tabbed
+
 # Sequence of commands upon login
 exec --no-startup-id i3-msg 'workspace "1: Terminal"; exec gnome-terminal'
 exec --no-startup-id google-chrome
