@@ -14,12 +14,19 @@ workspace "8: Chrome" output HDMI-0
 workspace "10: Code" output primary
 workspace "19: SmartGit" output primary
 workspace "3: MATLAB" output HDMI-0
+workspace "2: Files" output HDMI-0
+workspace "7: Shutter" output primary
+workspace "4: Slack" output HDMI-0
+workspace "6: Spotify" output HDMI-0
 
 # Assignments for workspaces
 assign [class="Google-chrome"] "8: Chrome"
 assign [class="Code"] "10: Code"
 assign [class="SmartGit"] "19: SmartGit"
 assign [class="MATLAB R2022a - academic use"] "3: MATLAB"
+assign [class="shutter"] "7: Shutter"
+assign [class="slack"] "4: Slack"
+assign [class="spotify"] "6: Spotify"
 
 # Layouts for workspaces
 for_window [class="Google-chrome"] layout tabbed
