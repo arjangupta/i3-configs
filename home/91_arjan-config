@@ -24,9 +24,9 @@ assign [class="Google-chrome"] "8: Chrome"
 assign [class="Code"] "10: Code"
 assign [class="SmartGit"] "19: SmartGit"
 assign [class="MATLAB R2022a - academic use"] "3: MATLAB"
-assign [class="shutter"] "7: Shutter"
-assign [class="slack"] "4: Slack"
-assign [class="spotify"] "6: Spotify"
+assign [class="Shutter"] "7: Shutter"
+assign [class="Slack"] "4: Slack"
+assign [class="Spotify"] "6: Spotify"
 
 # Layouts for workspaces
 for_window [class="Google-chrome"] layout tabbed
