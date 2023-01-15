@@ -18,6 +18,7 @@ workspace "2: Files" output HDMI-0
 workspace "7: Shutter" output primary
 workspace "4: Slack" output HDMI-0
 workspace "6: Spotify" output HDMI-0
+workspace "5" output HDMI-0
 
 # Assignments for workspaces
 assign [class="Google-chrome"] "8: Chrome"
