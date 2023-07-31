@@ -12,7 +12,6 @@ bindsym $mod+$i3-wm.binding.right focus right
 workspace "1: Terminal" output primary
 workspace "8: Chrome" output HDMI-0
 workspace "10: Code" output primary
-workspace "19: SmartGit" output primary
 workspace "3: MATLAB" output HDMI-0
 workspace "2: Files" output HDMI-0
 workspace "7: Shutter" output primary
@@ -23,7 +22,6 @@ workspace "5" output HDMI-0
 # Assignments for workspaces
 assign [class="Google-chrome"] "8: Chrome"
 assign [class="Code"] "10: Code"
-assign [class="SmartGit"] "19: SmartGit"
 assign [class="MATLAB R2022a - academic use"] "3: MATLAB"
 assign [class="Shutter"] "7: Shutter"
 assign [class="Slack"] "4: Slack"
