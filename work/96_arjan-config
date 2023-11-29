@@ -1,0 +1,39 @@
+## Navigate // Relative Window // <> j k l ; ##
+set_from_resource $i3-wm.binding.left i3-wm.binding.left j
+set_from_resource $i3-wm.binding.right i3-wm.binding.right semicolon
+set_from_resource $i3-wm.binding.up i3-wm.binding.up k
+set_from_resource $i3-wm.binding.down i3-wm.binding.down l
+bindsym $mod+$i3-wm.binding.left focus left
+bindsym $mod+$i3-wm.binding.down focus down
+bindsym $mod+$i3-wm.binding.up focus up
+bindsym $mod+$i3-wm.binding.right focus right
+
+# Output workspaces to screens
+# workspace "1: Terminal" output primary
+# workspace "8: Chrome" output HDMI-0
+# workspace "10: Code" output primary
+# workspace "3: MATLAB" output HDMI-0
+# workspace "2: Files" output HDMI-0
+# workspace "7: Shutter" output primary
+# workspace "4: Slack" output HDMI-0
+# workspace "6: Spotify" output HDMI-0
+# workspace "5" output HDMI-0
+
+# Assignments for workspaces
+assign [class="Google-chrome"] "8: Chrome"
+assign [class="Code"] "10: Code"
+# assign [class="MATLAB R2022a - academic use"] "3: MATLAB"
+assign [class="Shutter"] "7: Shutter"
+# assign [class="Slack"] "4: Slack"
+# assign [class="Spotify"] "6: Spotify"
+
+# Layouts for workspaces
+# for_window [class="Google-chrome"] layout tabbed
+# for_window [class="Code"] layout tabbed
+
+# Sequence of commands upon login
+exec --no-startup-id i3-msg 'workspace "1: Terminal"; exec gnome-terminal'
+exec --no-startup-id google-chrome
+
+# Have the PrintScreen key take a screenshot with `shutter -s`
+bindsym Print exec shutter -s
