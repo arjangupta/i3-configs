@@ -1,12 +1,13 @@
 ## Navigate // Relative Window // <> j k l ; ##
-set_from_resource $i3-wm.binding.left i3-wm.binding.left j
-set_from_resource $i3-wm.binding.right i3-wm.binding.right semicolon
-set_from_resource $i3-wm.binding.up i3-wm.binding.up k
-set_from_resource $i3-wm.binding.down i3-wm.binding.down l
-bindsym $mod+$i3-wm.binding.left focus left
-bindsym $mod+$i3-wm.binding.down focus down
-bindsym $mod+$i3-wm.binding.up focus up
-bindsym $mod+$i3-wm.binding.right focus right
+# set_from_resource $wm.binding.left i3-wm.binding.left j
+# set_from_resource $wm.binding.right i3-wm.binding.right semicolon
+# set_from_resource $wm.binding.up i3-wm.binding.up k
+# set_from_resource $wm.binding.down i3-wm.binding.down l
+# bindsym $mod+$wm.binding.left focus left
+# bindsym $mod+$wm.binding.down focus down
+# bindsym $mod+$wm.binding.up focus up
+# bindsym $mod+$wm.binding.right focus right
+# The above settings were directly changed in 30_navigation
 
 # Output workspaces to screens
 # workspace "1: Terminal" output primary
